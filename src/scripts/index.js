@@ -4,5 +4,4 @@ if (process.env.NODE_ENV === 'development') {
   require('../index.html');
 }
 
-import "bootstrap/js/dist/util.js";
-import "bootstrap/js/dist/modal.js";
+import "bootstrap";
