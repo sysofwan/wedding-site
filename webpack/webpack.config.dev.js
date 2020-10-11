@@ -1,9 +1,10 @@
 const Path = require('path');
 const Webpack = require('webpack');
 const { merge } = require('webpack-merge');
-const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const common = require('./webpack.common.js');
+
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -19,21 +20,13 @@ module.exports = merge(common, {
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
-    new StylelintPlugin({
-      files: Path.join('src', '**/*.s?(a|c)ss')
+    new ESLintPlugin({
+      emitWarning: true,
+      files: './src'
     })
   ],
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        include: Path.resolve(__dirname, '../src'),
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true
-        }
-      },
       {
         test: /\.html$/i,
         loader: 'html-loader',
@@ -45,7 +38,7 @@ module.exports = merge(common, {
       },
       {
         test: /\.s?css$/i,
-        use: ['style-loader', 'css-loader?sourceMap=true', 'postcss-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader?sourceMap=true', 'sass-loader']
       }
     ]
   }

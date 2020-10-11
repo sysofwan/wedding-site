@@ -4,4 +4,5 @@ if (process.env.NODE_ENV === 'development') {
   require('../index.html');
 }
 
-console.log('webpack starterkit');
+import "bootstrap/js/dist/util.js";
+import "bootstrap/js/dist/modal.js";
