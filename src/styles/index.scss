@@ -21,24 +21,21 @@ $enable-shadows: true;
 @import "bootstrap/scss/bootstrap";
 
 html {
-  height: 100vh;
-  overflow: hidden;
-}
-
-body {
-  height: 100vh;
   scroll-behavior: smooth;
   position: relative;
-  overflow-y: scroll;
 }
 
 section {
   min-height: 100vh;
+  background: no-repeat center center;
+  background-size: cover;
 }
 
 #home {
   min-height: calc(100vh - 56px);
-  background-color: aqua;
+  // background-color: aqua;
+
+  background-image: url(../../public/bg-1.jpg);
 }
 
 #location {
